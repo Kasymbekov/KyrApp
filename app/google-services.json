@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "306495916846",
+    "project_id": "kyrapp-13e90",
+    "storage_bucket": "kyrapp-13e90.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306495916846:android:8f779076408eaf572108bf",
+        "android_client_info": {
+          "package_name": "com.example.kyrapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7WAPsYZpYEFAz3Bb3Z7_iv5oB_cM9xYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
