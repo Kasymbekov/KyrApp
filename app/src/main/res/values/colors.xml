@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="bg_yellow_color">#FFE8C5</color>
+    <color name="green_in_app">#15802D</color>
 </resources>
