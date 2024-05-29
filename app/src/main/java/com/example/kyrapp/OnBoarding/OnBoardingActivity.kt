@@ -45,12 +45,6 @@ class OnBoardingActivity : AppCompatActivity() {
             if (currentItem < items.size - 1) {
                 binding.viewP.currentItem = currentItem + 1
             }
-            if(currentItem==items.size-1){
-                binding.nextBt.text = R.string.onboardLastPage.toString()
-            }
-            if (currentItem!=items.size-1){
-                binding.nextBt.text = R.string.onboardNextPage.toString()
-            }
             else {
                 val intent = Intent(this@OnBoardingActivity, MainActivity::class.java)
                 startActivity(intent)
