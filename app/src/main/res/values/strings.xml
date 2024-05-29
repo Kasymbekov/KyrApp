@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KyrApp</string>
+    <string name="onboardNextPage">Далее</string>
+    <string name="onboardLastPage">Начать</string>
 </resources>
