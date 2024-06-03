@@ -1,5 +1,13 @@
 <resources>
+    <!--OnBoarding-->
     <string name="app_name">KyrApp</string>
     <string name="onboardNextPage">Далее</string>
     <string name="onboardLastPage">Начать</string>
+
+    <string name="page1_title">Здравствуйте!</string>
+    <string name="page2_title">Здесь</string>
+    <string name="page3_title">Спасибо что выбираете нас!</string>
+    <string name="page1_descr">Рады приветствовать вас в нашем приложении</string>
+    <string name="page2_descr">Мы вам поможем выучить Кыргызский язык</string>
+    <string name="page3_descr">Желаем вам удачи</string>
 </resources>

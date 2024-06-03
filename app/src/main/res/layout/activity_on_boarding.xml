@@ -18,12 +18,12 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/nextBt"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="24dp"
-            android:text="next"
+            android:text="@string/onboardNextPage"
             app:backgroundTint="#15802D"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
