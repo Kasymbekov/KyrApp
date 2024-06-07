@@ -7,7 +7,7 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
-import com.example.kyrapp.MainActivity
+import com.example.kyrapp.ui.MainActivity
 import com.example.kyrapp.R
 import com.example.kyrapp.databinding.ActivityOnBoardingBinding
 
@@ -22,9 +22,9 @@ class OnBoardingActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val items = listOf(
-            Triple(R.drawable.etn, "Салам Алееейкум", "Сейчас будет жарко"),
-            Triple(R.drawable.aktan_ak, "Я не киргиз, я кыргыз! ", "ИИИИИИУУ🤙🤙🤙"),
-            Triple(R.drawable.aygen, "В конце подарок!!", "Жду дизайна, ваываоы ваывавыа ыва ываевапавпвпвапрвап ")
+            Triple(R.drawable.welcome1, "Здравствуйте!", "Рады приветствовать вас в нашем приложении"),
+            Triple(R.drawable.welcome2, "Здесь", "Мы вам поможем выучить Кыргызский язык"),
+            Triple(R.drawable.welcome3, "Спасибо что выбираете нас!", "Желаем вам удачи")
         )
 
         adapter = OnBoardingAdapter(items)

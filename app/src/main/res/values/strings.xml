@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">KyrApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="main_logo">Main logo</string>
+    <string name="welcome_text">Добро пожаловать в Kyrapp</string>
+    <string name="welcome_register">Регистрация</string>
 </resources>
