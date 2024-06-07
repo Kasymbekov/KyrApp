@@ -54,6 +54,7 @@ class LoginFragment : Fragment() {
                         ).show()
                         val user = auth.currentUser
 //                    updateUI(user)
+                        findNavController().navigate(R.id.action_loginFragment_to_mainScreenActivity)
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w("nurs", "signInWithEmail:failure", task.exception)

@@ -19,11 +19,5 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // temp code
-//        val welcomeFragment = WelcomeFragment()
-//        supportFragmentManager.beginTransaction().apply {
-//            replace(R.id.container, welcomeFragment)
-//            commit()
-//        }
     }
 }
