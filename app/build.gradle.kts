@@ -66,12 +66,15 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
 
+
+    implementation("com.github.jitpack:android-example:1.0.1")
+
     // navigation component
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 
 
 
-    //Колода
-    implementation ("com.github.Yalantis:Koloda-Android:v0.0.2-alpha")
+//    //Колода
+//    implementation ("com.github.Yalantis:Koloda-Android:v0.0.2-alpha")
 }
