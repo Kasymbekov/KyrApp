@@ -6,4 +6,5 @@
     <color name="bg_yellow_color">#FFE8C5</color>
     <color name="green">#15802D</color>
     <color name="main_bg">#FFE8C5</color>
+    <color name="text_color_dark">#333333</color>
 </resources>

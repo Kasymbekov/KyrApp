@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Главная"
+        android:icon="@drawable/homepage"
+        android:id="@+id/mainFragment"/>
+    <item android:title="Уроки"
+        android:icon="@drawable/lessonspage"
+        android:id="@+id/lessonsFragment"/>
+    <item android:title="Алфавит"
+        android:icon="@drawable/abc"
+        android:id="@+id/alphabetFragment"/>
+
+</menu>

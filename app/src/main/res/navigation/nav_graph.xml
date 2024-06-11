@@ -24,5 +24,29 @@
         android:id="@+id/loginFragment"
         android:name="com.example.kyrapp.ui.auth.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_mainScreenActivity"
+            app:destination="@id/mainScreenActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/mainScreenActivity"
+        android:name="com.example.kyrapp.MainScreenActivity"
+        android:label="activity_main_screen"
+        tools:layout="@layout/activity_main_screen" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.kyrapp.ui.fragments.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/alphabetFragment"
+        android:name="com.example.kyrapp.ui.fragments.AlphabetFragment"
+        android:label="fragment_alphabet"
+        tools:layout="@layout/fragment_alphabet" />
+    <fragment
+        android:id="@+id/lessonsFragment"
+        android:name="com.example.kyrapp.ui.fragments.LessonsFragment"
+        android:label="fragment_lessons"
+        tools:layout="@layout/fragment_lessons" />
 </navigation>

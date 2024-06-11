@@ -5,4 +5,17 @@
     <string name="main_logo">Main logo</string>
     <string name="welcome_text">Добро пожаловать в Kyrapp</string>
     <string name="welcome_register">Регистрация</string>
+
+
+    <!-- On Boading pages -->
+    <string name="onboard1_title">Здравствуйте!</string>
+    <string name="onboard2_title">Здесь</string>
+    <string name="onboard3_title">Спасибо что выбираете нас!</string>
+
+    <string name="onboard1_desc">Рады приветствовать вас в нашем приложении</string>
+    <string name="onboard2_desc">Мы вам поможем выучить Кыргызский язык</string>
+    <string name="onboard3_desc">Желаем вам удачи</string>
+
+
+
 </resources>

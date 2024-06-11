@@ -22,9 +22,9 @@ class OnBoardingActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val items = listOf(
-            Triple(R.drawable.welcome1, "Здравствуйте!", "Рады приветствовать вас в нашем приложении"),
-            Triple(R.drawable.welcome2, "Здесь", "Мы вам поможем выучить Кыргызский язык"),
-            Triple(R.drawable.welcome3, "Спасибо что выбираете нас!", "Желаем вам удачи")
+            Triple(R.drawable.welcome1, getString(R.string.onboard1_title), getString(R.string.onboard1_desc)),
+            Triple(R.drawable.welcome2, getString(R.string.onboard2_title), getString(R.string.onboard1_desc)),
+            Triple(R.drawable.welcome3, getString(R.string.onboard3_title), getString(R.string.onboard1_desc))
         )
 
         adapter = OnBoardingAdapter(items)

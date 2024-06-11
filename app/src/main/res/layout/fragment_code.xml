@@ -16,24 +16,26 @@
         android:fontFamily="@font/comfortaa"
         android:gravity="center"
         android:text="@string/welcome_register"
+        android:textColor="@color/text_color_dark"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="22dp"
-        android:layout_marginTop="58dp"
         android:layout_marginStart="48dp"
-        android:textSize="16sp"
+        android:layout_marginTop="58dp"
         android:text="Код был отправлен на почту"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/text_color_dark"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
     <EditText
         android:id="@+id/etEmail"
