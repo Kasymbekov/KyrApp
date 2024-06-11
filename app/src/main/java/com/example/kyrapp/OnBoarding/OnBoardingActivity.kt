@@ -23,8 +23,8 @@ class OnBoardingActivity : AppCompatActivity() {
 
         val items = listOf(
             Triple(R.drawable.welcome1, getString(R.string.onboard1_title), getString(R.string.onboard1_desc)),
-            Triple(R.drawable.welcome2, getString(R.string.onboard2_title), getString(R.string.onboard1_desc)),
-            Triple(R.drawable.welcome3, getString(R.string.onboard3_title), getString(R.string.onboard1_desc))
+            Triple(R.drawable.welcome2, getString(R.string.onboard2_title), getString(R.string.onboard2_desc)),
+            Triple(R.drawable.welcome3, getString(R.string.onboard3_title), getString(R.string.onboard3_desc))
         )
 
         adapter = OnBoardingAdapter(items)
