@@ -33,6 +33,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -61,7 +62,7 @@ dependencies {
     implementation("com.google.android.material:material:1.5.0")
 
     // Import the Firebase BoM
-    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
+    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
 
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
@@ -73,8 +74,11 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 
+    implementation ("androidx.recyclerview:recyclerview:1.3.2")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.8.2")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.2")
 
 
-//    //Колода
+////    //Колода
 //    implementation ("com.github.Yalantis:Koloda-Android:v0.0.2-alpha")
 }
