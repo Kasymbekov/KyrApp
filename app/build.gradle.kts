@@ -4,6 +4,9 @@ plugins {
 
     // The Google services Gradle plugin
     id("com.google.gms.google-services")
+
+    // The Crashlytics Gradle plugin
+    id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -77,6 +80,10 @@ dependencies {
     implementation ("androidx.recyclerview:recyclerview:1.3.2")
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.8.2")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.2")
+
+    // Crashlytics and Analytics
+    implementation("com.google.firebase:firebase-crashlytics")
+    implementation("com.google.firebase:firebase-analytics")
 
 
 ////    //Колода

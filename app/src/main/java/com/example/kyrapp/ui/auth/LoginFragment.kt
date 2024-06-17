@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.kyrapp.R
@@ -13,6 +14,7 @@ import com.example.kyrapp.databinding.FragmentLoginBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import kotlin.concurrent.thread
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
@@ -35,8 +37,8 @@ class LoginFragment : Fragment() {
         }
 
         binding.btnNext.setOnClickListener {
-            signIn(binding.etEmail.text.toString().trim(), binding.etPass.text.toString().trim())
-            //Toast.makeText(requireContext(), "Main page", Toast.LENGTH_SHORT).show()
+            //signIn(binding.etEmail.text.toString().trim(), binding.etPass.text.toString().trim())
+            throw RuntimeException("Test Crash")
         }
     }
 

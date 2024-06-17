@@ -17,15 +17,11 @@ class MainScreenActivity : AppCompatActivity() {
         binding = ActivityMainScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
         val navigation = Navigation.findNavController(this,R.id.fragment_host_main)
         NavigationUI.setupWithNavController(binding.bottomMenu,navigation)
         if (savedInstanceState == null) {
             val navController = findNavController(R.id.fragment_host_main)
             navController.navigate(R.id.mainFragment)
         }
-
-
     }
 }
