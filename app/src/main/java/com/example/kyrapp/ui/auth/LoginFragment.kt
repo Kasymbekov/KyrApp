@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.example.kyrapp.R
 import com.example.kyrapp.databinding.FragmentLoginBinding
@@ -19,6 +20,18 @@ import kotlin.concurrent.thread
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var auth: FirebaseAuth
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val backPressedCallback = object :
+            OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().popBackStack()
+            }
+        }
+        activity?.onBackPressedDispatcher?.addCallback(this, backPressedCallback)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,8 +50,12 @@ class LoginFragment : Fragment() {
         }
 
         binding.btnNext.setOnClickListener {
-            //signIn(binding.etEmail.text.toString().trim(), binding.etPass.text.toString().trim())
-            throw RuntimeException("Test Crash")
+            signIn(binding.etEmail.text.toString().trim(), binding.etPass.text.toString().trim())
+            //throw RuntimeException("Test Crash")
+        }
+
+        binding.tvResetPass.setOnClickListener {
+            findNavController().navigate(R.id.resetPassFragment)
         }
     }
 
@@ -71,5 +88,6 @@ class LoginFragment : Fragment() {
         }
 
     }
+
 
 }

@@ -15,7 +15,7 @@
     <string name="onboard1_desc">Рады приветствовать вас в нашем приложении</string>
     <string name="onboard2_desc">Мы вам поможем выучить Кыргызский язык</string>
     <string name="onboard3_desc">Желаем вам удачи</string>
-
+    <string name="nextBtn">Дальше</string>
 
 
 </resources>

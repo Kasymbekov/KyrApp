@@ -5,51 +5,43 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_bg"
     tools:context=".OnBoarding.OnBoardingActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/bg_yellow_color"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/nextBt"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/nextBtn"
+        app:backgroundTint="#15802D"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewP" />
+
+    <LinearLayout
+        android:id="@+id/indicator_layout"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="@+id/nextBt">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/nextBt"
-            android:layout_width="80dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="24dp"
-            android:text="next"
-            app:backgroundTint="#15802D"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewP" />
+    </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/indicator_layout"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginBottom="24dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/nextBt"></LinearLayout>
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewP"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/indicator_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewP"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/indicator_layout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

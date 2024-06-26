@@ -49,4 +49,9 @@
         android:name="com.example.kyrapp.ui.fragments.LessonsFragment"
         android:label="fragment_lessons"
         tools:layout="@layout/fragment_lessons" />
+    <fragment
+        android:id="@+id/resetPassFragment"
+        android:name="com.example.kyrapp.ui.auth.ResetPassFragment"
+        android:label="fragment_reset_pass"
+        tools:layout="@layout/fragment_reset_pass" />
 </navigation>

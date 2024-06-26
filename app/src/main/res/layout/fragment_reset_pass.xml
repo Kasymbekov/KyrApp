@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_bg"
-    tools:context=".ui.auth.LoginFragment">
+    tools:context=".ui.auth.ResetPassFragment">
 
     <TextView
         android:id="@+id/tvTitle"
@@ -15,7 +15,7 @@
         android:layout_marginTop="80dp"
         android:fontFamily="@font/comfortaa"
         android:gravity="center"
-        android:text="Вход"
+        android:text="Сброс пароля"
         android:textColor="@color/text_color_dark"
         android:textSize="36sp"
         android:textStyle="bold"
@@ -23,63 +23,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/etEmail"
+    <TextView
+        android:id="@+id/tvInfo"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="22dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/et_bg"
-        android:hint="Почта"
-        android:inputType="textEmailAddress"
-        android:paddingStart="26dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="58dp"
+        android:text="Введите почту"
+        android:textColor="@color/text_color_dark"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
     <EditText
-        android:id="@+id/etPass"
+        android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="22dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/et_bg"
-        android:hint="Пароль"
-        android:inputType="textPassword"
+        android:hint="user@example.com"
+        android:inputType="textEmailAddress"
         android:paddingStart="26dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etEmail" />
-
-    <TextView
-        android:id="@+id/tvResetPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="8dp"
-        android:text="Сбросить пароль?"
-        app:layout_constraintStart_toStartOf="@id/etPass"
-        app:layout_constraintTop_toBottomOf="@id/etPass" />
-
-    <TextView
-        android:id="@+id/tvQuestion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="4dp"
-        android:text="У вас ещё нет аккаунта?"
-        app:layout_constraintEnd_toEndOf="@id/etPass"
-        app:layout_constraintTop_toBottomOf="@id/etPass" />
-
+        app:layout_constraintTop_toBottomOf="@id/tvInfo" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnNext"
+        android:id="@+id/btnReset"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginHorizontal="22dp"
         android:layout_marginBottom="30dp"
         android:fontFamily="@font/comfortaa"
-        android:text="Войти"
+        android:text="Сбросить пароль"
         android:textColor="@color/white"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -87,6 +66,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

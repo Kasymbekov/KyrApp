@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.example.kyrapp.R
 import com.example.kyrapp.databinding.FragmentRegisterBinding
@@ -17,6 +18,19 @@ import com.google.firebase.auth.auth
 class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var auth: FirebaseAuth
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val backPressedCallback = object :
+            OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().popBackStack()
+            }
+        }
+        activity?.onBackPressedDispatcher?.addCallback(this, backPressedCallback)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,6 +52,10 @@ class RegisterFragment : Fragment() {
 
         binding.tvQuestion.setOnClickListener {
             findNavController().navigate(R.id.loginFragment)
+        }
+
+        binding.btnGoogle.setOnClickListener {
+            Toast.makeText(requireContext(), "Функция в разработке...", Toast.LENGTH_SHORT).show()
         }
     }
 
