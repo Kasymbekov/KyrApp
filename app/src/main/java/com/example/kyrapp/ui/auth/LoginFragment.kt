@@ -15,6 +15,7 @@ import com.example.kyrapp.databinding.FragmentLoginBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import java.util.regex.Pattern
 import kotlin.concurrent.thread
 
 class LoginFragment : Fragment() {
@@ -45,12 +46,21 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         binding.tvQuestion.setOnClickListener {
             findNavController().navigate(R.id.registerFragment)
         }
 
         binding.btnNext.setOnClickListener {
-            signIn(binding.etEmail.text.toString().trim(), binding.etPass.text.toString().trim())
+            var email = binding.etEmail.text.toString().trim()
+            var pass = binding.etPass.text.toString().trim()
+            if (isEmailValid(email)){
+                Toast.makeText(requireContext(), "Email is valid", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(requireContext(), "Email is invalid", Toast.LENGTH_SHORT).show()
+            }
+            //signIn(email, pass)
             //throw RuntimeException("Test Crash")
         }
 
@@ -60,7 +70,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun signIn(email: String, pass: String) {
-        if (email.isNotEmpty()&&pass.isNotEmpty()){
+        if (email.isNotEmpty() && pass.isNotEmpty()) {
             auth.signInWithEmailAndPassword(email, pass)
                 .addOnCompleteListener(requireActivity()) { task ->
                     if (task.isSuccessful) {
@@ -72,7 +82,6 @@ class LoginFragment : Fragment() {
                             Toast.LENGTH_SHORT,
                         ).show()
                         val user = auth.currentUser
-//                    updateUI(user)
                         findNavController().navigate(R.id.action_loginFragment_to_mainScreenActivity)
                     } else {
                         // If sign in fails, display a message to the user.
@@ -82,12 +91,31 @@ class LoginFragment : Fragment() {
                             "Authentication failed.",
                             Toast.LENGTH_SHORT,
                         ).show()
-//                    updateUI(null)
                     }
                 }
+
         }
 
     }
+
+    private fun isEmailValid(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
+
+//    private fun passwordValid(pass: String): Boolean
+//
+//        val oneLowerCase = "?=.*[a-z])"
+//        val oneUpperCase = "?=.*[A-Z]"
+//        val oneNumeric = "?=.*\\d"
+//        val regex = oneLowerCase + oneUpperCase + oneNumeric
+//        val p: Pattern = Pattern.compile(regex)
+//
+//        if(pass.length < 8){
+//            Toast.makeText(requireContext(), "Минимум 8 символов", Toast.LENGTH_SHORT).show()
+//        }
+//        if(pass.contains())
+//    }
 
 
 }
