@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.kyrapp.R
-//import com.example.kyrapp.adapters.SwipeKolodaAdapter
-//import com.yalantis.library.Koloda
+import com.example.kyrapp.adapters.SwipeKolodaAdapter
+import com.yalantis.library.Koloda
 
 class AlphabetFragment : Fragment() {
 
@@ -27,14 +27,14 @@ class AlphabetFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val kolodaView = view.findViewById<Koloda>(R.id.koloda)
-//        val items = listOf(
-//            Pair(R.drawable.alma, "А"),
-//            Pair(R.drawable.balyk, "Б"),
-//            Pair(R.drawable.vaza, "В")
-//        )
-//        val adapter = SwipeKolodaAdapter(requireContext(), items)
-//        kolodaView.adapter = adapter
+        val kolodaView = view.findViewById<Koloda>(R.id.koloda)
+        val items = listOf(
+            Pair(R.drawable.alma, "А"),
+            Pair(R.drawable.balyk, "Б"),
+            Pair(R.drawable.vaza, "В")
+        )
+        val adapter = SwipeKolodaAdapter(requireContext(), items)
+        kolodaView.adapter = adapter
     }
 
 

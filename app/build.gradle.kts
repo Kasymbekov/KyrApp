@@ -86,6 +86,9 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
 
 
-////    //Колода
-//    implementation ("com.github.Yalantis:Koloda-Android:v0.0.2-alpha")
+    //Колода
+    implementation ("com.github.Yalantis:Koloda-Android:v0.0.2-alpha")
+
+    // mask to an EditText
+    implementation("io.github.vicmikhailau:MaskedEditText:5.0.2")
 }

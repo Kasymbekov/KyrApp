@@ -55,12 +55,12 @@ class LoginFragment : Fragment() {
         binding.btnNext.setOnClickListener {
             var email = binding.etEmail.text.toString().trim()
             var pass = binding.etPass.text.toString().trim()
-            if (isEmailValid(email)){
-                Toast.makeText(requireContext(), "Email is valid", Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(requireContext(), "Email is invalid", Toast.LENGTH_SHORT).show()
-            }
-            //signIn(email, pass)
+//            if (isEmailValid(email)){
+//                Toast.makeText(requireContext(), "Email is valid", Toast.LENGTH_SHORT).show()
+//            }else{
+//                Toast.makeText(requireContext(), "Email is invalid", Toast.LENGTH_SHORT).show()
+//            }
+            signIn(email, pass)
             //throw RuntimeException("Test Crash")
         }
 
