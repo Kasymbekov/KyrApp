@@ -1,8 +1,10 @@
 package com.example.kyrapp.ui.auth
 
 import android.os.Bundle
+import android.text.Editable
 import android.text.InputFilter
 import android.text.Spanned
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,9 +17,13 @@ import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.findNavController
 import com.example.kyrapp.R
 import com.example.kyrapp.databinding.FragmentRegisterBinding
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
@@ -62,9 +68,45 @@ class RegisterFragment : Fragment() {
             findNavController().navigate(R.id.loginFragment)
         }
 
+        binding.etEmail.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun afterTextChanged(p0: Editable?) {
+                validateEmail(binding.etEmail, binding.inputEmail)
+            }
+
+        })
+
+        // password validation
+        binding.etPass.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun afterTextChanged(p0: Editable?) {
+                validatePassword(binding.etPass, binding.inputPass)
+            }
+
+        })
+
+        // password confirmation validation
+        binding.etPassConfirm.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun afterTextChanged(p0: Editable?) {
+                validatePasswordConfirm(
+                    binding.etPassConfirm,
+                    binding.inputPassConfirm,
+                    binding.etPass
+                )
+            }
+        })
+
         binding.btnGoogle.setOnClickListener {
             Toast.makeText(requireContext(), "Функция в разработке...", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun validateEmail(etEmail: TextInputEditText, inputEmail: TextInputLayout) {
+
     }
 
     private fun registerUser(email: String, password: String) {
@@ -84,7 +126,7 @@ class RegisterFragment : Fragment() {
                         ).show()
                         findNavController().navigate(R.id.codeFragment)
                         val user = auth.currentUser
-//                    updateUI(user)
+                        //  updateUI(user)
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w("nurs", "createUserWithEmail:failure", task.exception)
@@ -99,4 +141,77 @@ class RegisterFragment : Fragment() {
         }
 
     }
+
+    private fun validatePassword(
+        etPassword: TextInputEditText,
+        etPasswordL: TextInputLayout
+    ): Boolean {
+        val oneLowerCase = Regex("[a-z]+")
+        val oneUpperCase = Regex("[A-Z]+")
+        val oneNumeric = Regex("\\d") // matches any digit
+
+        return when {
+            etPassword.text.toString().trim().isEmpty() -> {
+                etPasswordL.error = "Обязательное поле"
+                false
+            }
+
+            etPassword.text.toString().trim().length < 8 || etPassword.text.toString()
+                .trim().length > 12 -> {
+                etPasswordL.error = "Пароль должен состоять из 8-12 символов"
+                false
+            }
+
+            !oneNumeric.containsMatchIn(etPassword.text.toString().trim()) -> {
+                etPasswordL.error = "Должна быть минимум 1 цифра"
+                false
+            }
+
+            !oneLowerCase.containsMatchIn(etPassword.text.toString().trim()) -> {
+                etPasswordL.error = "Должна быть минимум 1 маленькая буква"
+                false
+            }
+
+            !oneUpperCase.containsMatchIn(etPassword.text.toString().trim()) -> {
+                etPasswordL.error = "Должна быть минимум 1 большая буква"
+                false
+            }
+
+            else -> {
+                etPasswordL.error = null
+                true
+            }
+        }
+    }
+
+    private fun validatePasswordConfirm(
+        etPassword: TextInputEditText,
+        etPasswordL: TextInputLayout,
+        etPasswordConfirm: TextInputEditText
+    ): Boolean {
+
+        return when {
+            etPassword.text.toString().trim().isEmpty() -> {
+                etPasswordL.error = "Обязательное поле"
+                false
+            }
+
+            etPassword.text.toString().trim().length < 8 || etPassword.text.toString()
+                .trim().length > 12 -> {
+                etPasswordL.error = "Пароль должен состоять из 8-12 символов"
+                false
+            }
+
+            etPassword.text.toString().trim() != etPasswordConfirm.text.toString().trim() -> {
+                etPasswordL.error = "Пароли не совпадают"
+                false
+            }
+
+            else -> {
+                etPasswordL.error = null
+                true
+            }
+        }
+    }
+
 }

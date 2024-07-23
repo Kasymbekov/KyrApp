@@ -23,80 +23,94 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/etEmail"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_email"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="22dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/et_bg"
-        android:hint="Почта"
-        android:inputType="textEmailAddress"
-        android:paddingStart="26dp"
+        android:layout_marginTop="8dp"
+        app:cursorColor="@color/text_color_dark"
+        app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+        app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_bg"
+            android:hint="Почта"
+            android:inputType="textEmailAddress"
+            android:paddingStart="26dp"
+            android:textSize="17sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.vicmikhailau.maskededittext.MaskedEditText
         android:id="@+id/etNumber"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="54dp"
         android:layout_marginHorizontal="22dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/et_bg"
         android:hint="Номер телефона"
-        app:mask="+996 ### ## ## ##"
         android:inputType="phone"
         android:paddingStart="26dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etEmail" />
+        app:layout_constraintTop_toBottomOf="@id/input_email"
+        app:mask="+996 ### ## ## ##" />
 
-
-    <!--    <EditText-->
-    <!--        android:id="@+id/etNumber"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="50dp"-->
-    <!--        android:layout_marginHorizontal="22dp"-->
-    <!--        android:layout_marginTop="8dp"-->
-    <!--        android:background="@drawable/et_bg"-->
-    <!--        android:hint="Номер телефона"-->
-    <!--        android:maxLength="9"-->
-    <!--        android:inputType="number"-->
-    <!--        android:digits="123456789"-->
-    <!--        android:paddingStart="26dp"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/etEmail" />-->
-
-
-    <EditText
-        android:id="@+id/etPass"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_pass"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="22dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/et_bg"
-        android:hint="Новый пароль"
-        android:inputType="textPassword"
-        android:paddingStart="26dp"
+        app:cursorColor="@color/text_color_dark"
+        app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etNumber" />
+        app:layout_constraintTop_toBottomOf="@id/etNumber"
+        app:passwordToggleEnabled="true">
 
-    <EditText
-        android:id="@+id/etPassConfirm"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPass"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_bg"
+            android:hint="Пароль"
+            android:inputType="textPassword"
+            android:paddingStart="26dp"
+            android:textSize="17sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_passConfirm"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="22dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/et_bg"
-        android:hint="Подтвердите пароль"
-        android:inputType="textPassword"
-        android:paddingStart="26dp"
+        app:cursorColor="@color/text_color_dark"
+        app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etPass" />
+        app:layout_constraintTop_toBottomOf="@id/input_pass"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPassConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_bg"
+            android:hint="Повторите пароль"
+            android:inputType="textPassword"
+            android:paddingStart="26dp"
+            android:textSize="17sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/tvQuestion"
@@ -109,7 +123,7 @@
         android:textColor="@color/text_color_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etPassConfirm" />
+        app:layout_constraintTop_toBottomOf="@id/input_passConfirm" />
 
     <ImageView
         android:id="@+id/ivLine"
@@ -130,7 +144,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="@color/white"
-        android:drawableLeft="@drawable/google_logo"
+        android:drawableLeft="@drawable/google"
         android:paddingStart="124dp"
         android:text="Google"
         android:textAlignment="textStart"

@@ -57,11 +57,11 @@ class LoginFragment : Fragment() {
             var pass = binding.etPass.text.toString().trim()
 //            if (isEmailValid(email)){
 //                Toast.makeText(requireContext(), "Email is valid", Toast.LENGTH_SHORT).show()
-//            }else{
+//            } else{
 //                Toast.makeText(requireContext(), "Email is invalid", Toast.LENGTH_SHORT).show()
 //            }
             signIn(email, pass)
-            //throw RuntimeException("Test Crash")
+            // throw RuntimeException("Test Crash")
         }
 
         binding.tvResetPass.setOnClickListener {
@@ -101,21 +101,5 @@ class LoginFragment : Fragment() {
     private fun isEmailValid(email: String): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
-
-
-//    private fun passwordValid(pass: String): Boolean
-//
-//        val oneLowerCase = "?=.*[a-z])"
-//        val oneUpperCase = "?=.*[A-Z]"
-//        val oneNumeric = "?=.*\\d"
-//        val regex = oneLowerCase + oneUpperCase + oneNumeric
-//        val p: Pattern = Pattern.compile(regex)
-//
-//        if(pass.length < 8){
-//            Toast.makeText(requireContext(), "Минимум 8 символов", Toast.LENGTH_SHORT).show()
-//        }
-//        if(pass.contains())
-//    }
-
 
 }

@@ -70,7 +70,6 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
 
-
     implementation("com.github.jitpack:android-example:1.0.1")
 
     // navigation component

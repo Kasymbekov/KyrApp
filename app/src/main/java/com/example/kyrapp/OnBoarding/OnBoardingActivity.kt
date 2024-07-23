@@ -21,36 +21,36 @@ class OnBoardingActivity : AppCompatActivity() {
         binding = ActivityOnBoardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val items = listOf(
-            Triple(R.drawable.welcome1, getString(R.string.onboard1_title), getString(R.string.onboard1_desc)),
-            Triple(R.drawable.welcome2, getString(R.string.onboard2_title), getString(R.string.onboard2_desc)),
-            Triple(R.drawable.welcome3, getString(R.string.onboard3_title), getString(R.string.onboard3_desc))
-        )
-
-        adapter = OnBoardingAdapter(items)
-        binding.viewP.adapter = adapter
-
-        setupIndicators(items.size)
-        setCurrentIndicator(0)
-
-        binding.viewP.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                setCurrentIndicator(position)
-            }
-        })
-
-        binding.nextBt.setOnClickListener {
-            val currentItem = binding.viewP.currentItem
-            if (currentItem < items.size - 1) {
-                binding.viewP.currentItem = currentItem + 1
-            }
-            else {
+//        val items = listOf(
+//            Triple(R.drawable.welcome1, getString(R.string.onboard1_title), getString(R.string.onboard1_desc)),
+//            Triple(R.drawable.welcome2, getString(R.string.onboard2_title), getString(R.string.onboard2_desc)),
+//            Triple(R.drawable.welcome3, getString(R.string.onboard3_title), getString(R.string.onboard3_desc))
+//        )
+//
+//        adapter = OnBoardingAdapter(items)
+//        binding.viewP.adapter = adapter
+//
+//        setupIndicators(items.size)
+//        setCurrentIndicator(0)
+//
+//        binding.viewP.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+//            override fun onPageSelected(position: Int) {
+//                super.onPageSelected(position)
+//                setCurrentIndicator(position)
+//            }
+//        })
+//
+//        binding.nextBt.setOnClickListener {
+//            val currentItem = binding.viewP.currentItem
+//            if (currentItem < items.size - 1) {
+//                binding.viewP.currentItem = currentItem + 1
+//            }
+//            else {
                 val intent = Intent(this@OnBoardingActivity, MainActivity::class.java)
                 startActivity(intent)
                 finish()
-            }
-        }
+//            }
+//        }
     }
 
     private fun setupIndicators(count: Int) {
