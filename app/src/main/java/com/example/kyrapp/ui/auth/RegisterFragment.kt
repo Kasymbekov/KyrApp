@@ -1,5 +1,6 @@
 package com.example.kyrapp.ui.auth
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputFilter
@@ -17,10 +18,14 @@ import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.findNavController
 import com.example.kyrapp.R
 import com.example.kyrapp.databinding.FragmentRegisterBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -28,6 +33,10 @@ import java.util.regex.Pattern
 class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var auth: FirebaseAuth
+
+    companion object {
+        private const val RC_SIGN_IN = 9001
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,13 +77,12 @@ class RegisterFragment : Fragment() {
             findNavController().navigate(R.id.loginFragment)
         }
 
-        binding.etEmail.addTextChangedListener(object: TextWatcher{
+        binding.etEmail.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(p0: Editable?) {
                 validateEmail(binding.etEmail, binding.inputEmail)
             }
-
         })
 
         // password validation
@@ -100,10 +108,22 @@ class RegisterFragment : Fragment() {
             }
         })
 
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.web_client_id))
+            .requestEmail()
+            .build()
+
+        val mGoogleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
+
         binding.btnGoogle.setOnClickListener {
-            Toast.makeText(requireContext(), "Функция в разработке...", Toast.LENGTH_SHORT).show()
+            val signInIntent = mGoogleSignInClient.signInIntent
+            startActivityForResult(signInIntent, RC_SIGN_IN)
         }
+
+
     }
+
+
 
     private fun validateEmail(etEmail: TextInputEditText, inputEmail: TextInputLayout) {
 
@@ -214,4 +234,37 @@ class RegisterFragment : Fragment() {
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == RC_SIGN_IN) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                val account = task.getResult(ApiException::class.java)
+                firebaseAuthWithGoogle(account.idToken)
+            } catch (e: ApiException) {
+                // Google Sign In failed, update UI appropriately
+            }
+        }
+    }
+
+    private fun firebaseAuthWithGoogle(idToken: String?) {
+        val credential = GoogleAuthProvider.getCredential(idToken, /*accessToken=*/ null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d("nurs", "Authentication succeed.")
+                    Toast.makeText(requireContext(), "Successfully signed as ${auth.currentUser?.displayName.toString()}", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.mainScreenActivity)
+                    val user = auth.currentUser
+                    //updateUI(user)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.d("nurs", "Authentication failed.")
+                    //updateUI(user)
+                }
+
+            }
+    }
 }
