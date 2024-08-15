@@ -27,6 +27,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
+import com.vicmikhailau.maskededittext.MaskedEditText
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -64,10 +65,10 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnNext.setOnClickListener {
-            registerUser(
-                binding.etEmail.text.toString().trim(),
-                binding.etPass.text.toString().trim()
-            )
+//            registerUser(
+//                binding.etEmail.text.toString().trim(),
+//                binding.etPass.text.toString().trim()
+//            )
 
             // get the filtered phone number
             Log.d("nurs:", binding.etNumber.unMaskedText.toString())
@@ -82,6 +83,16 @@ class RegisterFragment : Fragment() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(p0: Editable?) {
                 validateEmail(binding.etEmail, binding.inputEmail)
+            }
+        })
+
+
+        // number validation
+        binding.etNumber.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun afterTextChanged(p0: Editable?) {
+                validateNumber(binding.etNumber, binding.inputNumber)
             }
         })
 
@@ -123,12 +134,6 @@ class RegisterFragment : Fragment() {
 
     }
 
-
-
-    private fun validateEmail(etEmail: TextInputEditText, inputEmail: TextInputLayout) {
-
-    }
-
     private fun registerUser(email: String, password: String) {
         if (email.isNotEmpty() && password.isNotEmpty() && binding.etPassConfirm.text.toString()
                 .isNotEmpty() && binding.etNumber.text.toString()
@@ -138,7 +143,7 @@ class RegisterFragment : Fragment() {
                 .addOnCompleteListener(requireActivity()) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
-                        Log.d("nurs", "createUserWithEmail:success")
+            Log.d("nurs", "createUserWithEmail:success")
                         Toast.makeText(
                             context,
                             "Authentication succeed.",
@@ -160,6 +165,47 @@ class RegisterFragment : Fragment() {
                 }
         }
 
+    }
+
+    private fun validateEmail(
+        etEmail: TextInputEditText,
+        inputEmail: TextInputLayout
+    ): Boolean {
+        return when {
+            etEmail.text.toString().trim().isEmpty() -> {
+                inputEmail.error = "Обязательное поле"
+                false
+            }
+
+            !isEmailValid(etEmail.text.toString().trim()) -> {
+                inputEmail.error = "Заполните корректно"
+                false
+            }
+
+            else -> {
+                inputEmail.error = null
+                true
+            }
+        }
+    }
+
+    private fun validateNumber(etNumber: MaskedEditText, etNumberL: TextInputLayout): Boolean{
+        return when {
+            etNumber.text.toString().trim().isEmpty() -> {
+                etNumberL.error = "Обязательное поле"
+                false
+            }
+
+            etNumber.text.toString().trim().length != 17 -> {
+                etNumberL.error = "Заполните корректно"
+                false
+            }
+
+            else -> {
+                etNumberL.error = null
+                true
+            }
+        }
     }
 
     private fun validatePassword(
@@ -255,7 +301,11 @@ class RegisterFragment : Fragment() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("nurs", "Authentication succeed.")
-                    Toast.makeText(requireContext(), "Successfully signed as ${auth.currentUser?.displayName.toString()}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Successfully signed as ${auth.currentUser?.displayName.toString()}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     findNavController().navigate(R.id.mainScreenActivity)
                     val user = auth.currentUser
                     //updateUI(user)
@@ -266,5 +316,9 @@ class RegisterFragment : Fragment() {
                 }
 
             }
+    }
+
+    private fun isEmailValid(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 }
