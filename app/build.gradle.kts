@@ -86,9 +86,13 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics")
     implementation("com.google.firebase:firebase-analytics")
 
-    //Колода
+    // Koloda
     implementation ("com.github.Yalantis:Koloda-Android:v0.0.2-alpha")
 
-    // mask to an EditText
+    // Mask to an EditText
     implementation("io.github.vicmikhailau:MaskedEditText:5.0.2")
+
+    // Retrofit and Gson
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.google.code.gson:gson:2.11.0")
 }
