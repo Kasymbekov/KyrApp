@@ -65,10 +65,10 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnNext.setOnClickListener {
-//            registerUser(
-//                binding.etEmail.text.toString().trim(),
-//                binding.etPass.text.toString().trim()
-//            )
+            registerUser(
+                binding.etEmail.text.toString().trim(),
+                binding.etPass.text.toString().trim()
+            )
 
             // get the filtered phone number
             Log.d("nurs:", binding.etNumber.unMaskedText.toString())

@@ -92,6 +92,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/et_bg"
             android:hint="Пароль"
+            android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ !@#$%^*? 0123456789"
             android:inputType="textPassword"
             android:paddingStart="26dp"
             android:textSize="17sp" />
