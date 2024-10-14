@@ -86,7 +86,6 @@ class RegisterFragment : Fragment() {
             }
         })
 
-
         // number validation
         binding.etNumber.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -103,7 +102,6 @@ class RegisterFragment : Fragment() {
             override fun afterTextChanged(p0: Editable?) {
                 validatePassword(binding.etPass, binding.inputPass)
             }
-
         })
 
         // password confirmation validation
