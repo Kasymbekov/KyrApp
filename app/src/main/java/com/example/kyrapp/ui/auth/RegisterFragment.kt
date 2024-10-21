@@ -18,6 +18,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.findNavController
 import com.example.kyrapp.R
 import com.example.kyrapp.databinding.FragmentRegisterBinding
+import com.example.kyrapp.utils.validator.AuthValidator
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
@@ -82,7 +83,7 @@ class RegisterFragment : Fragment() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(p0: Editable?) {
-                validateEmail(binding.etEmail, binding.inputEmail)
+                AuthValidator.validateEmail(binding.etEmail, binding.inputEmail)
             }
         })
 
@@ -91,7 +92,7 @@ class RegisterFragment : Fragment() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(p0: Editable?) {
-                validateNumber(binding.etNumber, binding.inputNumber)
+                AuthValidator.validateNumber(binding.etNumber, binding.inputNumber)
             }
         })
 
@@ -100,7 +101,7 @@ class RegisterFragment : Fragment() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(p0: Editable?) {
-                validatePassword(binding.etPass, binding.inputPass)
+                AuthValidator.validatePassword(binding.etPass, binding.inputPass)
             }
         })
 
@@ -109,7 +110,7 @@ class RegisterFragment : Fragment() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(p0: Editable?) {
-                validatePasswordConfirm(
+                AuthValidator.validatePasswordConfirm(
                     binding.etPassConfirm,
                     binding.inputPassConfirm,
                     binding.etPass
@@ -165,119 +166,6 @@ class RegisterFragment : Fragment() {
 
     }
 
-    private fun validateEmail(
-        etEmail: TextInputEditText,
-        inputEmail: TextInputLayout
-    ): Boolean {
-        return when {
-            etEmail.text.toString().trim().isEmpty() -> {
-                inputEmail.error = "Обязательное поле"
-                false
-            }
-
-            !isEmailValid(etEmail.text.toString().trim()) -> {
-                inputEmail.error = "Заполните корректно"
-                false
-            }
-
-            else -> {
-                inputEmail.error = null
-                true
-            }
-        }
-    }
-
-    private fun validateNumber(etNumber: MaskedEditText, etNumberL: TextInputLayout): Boolean{
-        return when {
-            etNumber.text.toString().trim().isEmpty() -> {
-                etNumberL.error = "Обязательное поле"
-                false
-            }
-
-            etNumber.text.toString().trim().length != 17 -> {
-                etNumberL.error = "Заполните корректно"
-                false
-            }
-
-            else -> {
-                etNumberL.error = null
-                true
-            }
-        }
-    }
-
-    private fun validatePassword(
-        etPassword: TextInputEditText,
-        etPasswordL: TextInputLayout
-    ): Boolean {
-        val oneLowerCase = Regex("[a-z]+")
-        val oneUpperCase = Regex("[A-Z]+")
-        val oneNumeric = Regex("\\d") // matches any digit
-
-        return when {
-            etPassword.text.toString().trim().isEmpty() -> {
-                etPasswordL.error = "Обязательное поле"
-                false
-            }
-
-            etPassword.text.toString().trim().length < 8 || etPassword.text.toString()
-                .trim().length > 12 -> {
-                etPasswordL.error = "Пароль должен состоять из 8-12 символов"
-                false
-            }
-
-            !oneNumeric.containsMatchIn(etPassword.text.toString().trim()) -> {
-                etPasswordL.error = "Должна быть минимум 1 цифра"
-                false
-            }
-
-            !oneLowerCase.containsMatchIn(etPassword.text.toString().trim()) -> {
-                etPasswordL.error = "Должна быть минимум 1 маленькая буква"
-                false
-            }
-
-            !oneUpperCase.containsMatchIn(etPassword.text.toString().trim()) -> {
-                etPasswordL.error = "Должна быть минимум 1 большая буква"
-                false
-            }
-
-            else -> {
-                etPasswordL.error = null
-                true
-            }
-        }
-    }
-
-    private fun validatePasswordConfirm(
-        etPassword: TextInputEditText,
-        etPasswordL: TextInputLayout,
-        etPasswordConfirm: TextInputEditText
-    ): Boolean {
-
-        return when {
-            etPassword.text.toString().trim().isEmpty() -> {
-                etPasswordL.error = "Обязательное поле"
-                false
-            }
-
-            etPassword.text.toString().trim().length < 8 || etPassword.text.toString()
-                .trim().length > 12 -> {
-                etPasswordL.error = "Пароль должен состоять из 8-12 символов"
-                false
-            }
-
-            etPassword.text.toString().trim() != etPasswordConfirm.text.toString().trim() -> {
-                etPasswordL.error = "Пароли не совпадают"
-                false
-            }
-
-            else -> {
-                etPasswordL.error = null
-                true
-            }
-        }
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN) {
@@ -316,7 +204,4 @@ class RegisterFragment : Fragment() {
             }
     }
 
-    private fun isEmailValid(email: String): Boolean {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
 }

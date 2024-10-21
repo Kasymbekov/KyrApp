@@ -17,5 +17,12 @@
     <string name="onboard3_desc">Желаем вам удачи</string>
     <string name="nextBtn">Дальше</string>
 
-
+    <!--Registration page-->
+    <string name="required">Обязательное поле</string>
+    <string name="incorrect">Заполните корректно</string>
+    <string name="length">Пароль должен состоять из 8-12 символов</string>
+    <string name="min_digit">Должна быть минимум 1 цифра</string>
+    <string name="min_l_letter">Должна быть минимум 1 маленькая буква</string>
+    <string name="min_u_letter">Должна быть минимум 1 большая буква</string>
+    <string name="mismatch">Пароли не совпадают</string>
 </resources>
