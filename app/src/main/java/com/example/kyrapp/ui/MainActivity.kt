@@ -1,6 +1,7 @@
 package com.example.kyrapp.ui
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 //        )
 //        startActivity(intent)
 
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT // force portrait mode
     }
 
 }

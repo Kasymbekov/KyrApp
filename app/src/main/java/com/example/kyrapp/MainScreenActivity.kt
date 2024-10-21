@@ -1,9 +1,11 @@
 package com.example.kyrapp
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.browser.trusted.ScreenOrientation
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.Navigation
@@ -25,6 +27,9 @@ class MainScreenActivity : AppCompatActivity() {
             val navController = findNavController(R.id.fragment_host_main)
             navController.navigate(R.id.mainFragment)
         }
+
         Toast.makeText(this, this.javaClass.name.toString(), Toast.LENGTH_LONG).show()
+
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT // force portrait mode
     }
 }

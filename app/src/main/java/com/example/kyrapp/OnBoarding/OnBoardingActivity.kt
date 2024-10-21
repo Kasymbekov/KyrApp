@@ -1,6 +1,7 @@
 package com.example.kyrapp.OnBoarding
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -51,6 +52,8 @@ class OnBoardingActivity : AppCompatActivity() {
                 finish()
 //            }
 //        }
+
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT // force portrait mode
     }
 
     private fun setupIndicators(count: Int) {
