@@ -49,7 +49,6 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         binding.tvQuestion.setOnClickListener {
             findNavController().navigate(R.id.registerFragment)
         }
@@ -62,8 +61,8 @@ class LoginFragment : Fragment() {
 //            } else{
 //                Toast.makeText(requireContext(), "Email is invalid", Toast.LENGTH_SHORT).show()
 //            }
-            signIn(email, pass)
-            // throw RuntimeException("Test Crash")
+            //signIn(email, pass)
+            findNavController().navigate(R.id.action_loginFragment_to_mainScreenActivity)
         }
 
         binding.tvResetPass.setOnClickListener {
