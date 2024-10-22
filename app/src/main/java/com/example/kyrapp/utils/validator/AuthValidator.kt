@@ -1,5 +1,7 @@
 package com.example.kyrapp.utils.validator
 
+import android.content.Context
+import com.example.kyrapp.ui.MainActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.vicmikhailau.maskededittext.MaskedEditText
