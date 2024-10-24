@@ -1,10 +1,13 @@
 package com.example.kyrapp.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kyrapp.R
 import com.example.kyrapp.model.Item
@@ -36,6 +39,9 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
         private val videoLectures: TextView = itemView.findViewById(R.id.video_lectures_tv)
         private val files: TextView = itemView.findViewById(R.id.files_tv)
         private val startLessonButton: Button = itemView.findViewById(R.id.start_lesson_bt)
+        private val bookmarkIcon: ImageView = itemView.findViewById(R.id.save_icon)
+
+        private var isFavorite = false
 
         fun bind(item: Item) {
             lessonNum.text = item.lessonNum
@@ -44,7 +50,18 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
             videoLectures.text = item.videoLectures
             files.text = item.files
             startLessonButton.setOnClickListener {
-                // Обработка нажатия кнопки
+                // button handler
+            }
+
+            bookmarkIcon.setOnClickListener {
+                isFavorite = !isFavorite
+
+                if(isFavorite){
+                    bookmarkIcon.setImageResource(R.drawable.bookmark_filled)
+                }else{
+                    bookmarkIcon.setImageResource(R.drawable.bookmark)
+                }
+
             }
         }
     }
