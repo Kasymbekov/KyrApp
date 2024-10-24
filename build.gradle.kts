@@ -8,4 +8,7 @@ plugins {
 
     // The dependency for the Crashlytics Gradle plugin
     id("com.google.firebase.crashlytics") version "3.0.1" apply false
+
+    // Kotlin Symbol Processing (alternative to kapt)
+    id("com.google.devtools.ksp") version "2.0.21-1.0.26" apply false
 }

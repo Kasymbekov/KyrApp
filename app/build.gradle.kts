@@ -7,6 +7,9 @@ plugins {
 
     // The Crashlytics Gradle plugin
     id("com.google.firebase.crashlytics")
+
+    // Kotlin Symbol Processing (alternative to kapt)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -95,4 +98,12 @@ dependencies {
     // Retrofit and Gson
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.google.code.gson:gson:2.11.0")
+
+    // Room
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    // To use Kotlin Symbol Processing (KSP)
+    ksp ("androidx.room:room-compiler:$room_version")
 }
