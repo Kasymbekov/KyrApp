@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="letters">
+        <item>А</item>
+        <item>Б</item>
+        <item>В</item>
+    </string-array>
+
+    <integer-array name="images">
+        <item>@drawable/alma</item>
+        <item>@drawable/balyk</item>
+        <item>@drawable/vaza</item>
+    </integer-array>
+
+    <string-array name="imageText">
+        <item>Алма</item>
+        <item>Балык</item>
+        <item>Ваза</item>
+    </string-array>
+</resources>

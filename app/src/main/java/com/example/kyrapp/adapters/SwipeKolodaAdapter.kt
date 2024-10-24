@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.kyrapp.R
 
-class SwipeKolodaAdapter(private val context: Context, private val items: List<Pair<Int, String>>) : BaseAdapter() {
+class SwipeKolodaAdapter(private val context: Context, private val items: List<Triple<Int, String, String>>) : BaseAdapter() {
 
     override fun getCount(): Int {
         return items.size
@@ -36,10 +36,11 @@ class SwipeKolodaAdapter(private val context: Context, private val items: List<P
             viewHolder = view.tag as ViewHolder
         }
 
-        val (imageResId, text) = items[position]
+        val (imageResId, text, imageText) = items[position]
 
         viewHolder.imageView.setImageResource(imageResId)
         viewHolder.textView.text = text
+        viewHolder.imagetext.text = imageText
 
         return view
     }
@@ -47,6 +48,7 @@ class SwipeKolodaAdapter(private val context: Context, private val items: List<P
     private class ViewHolder(view: View) {
         val imageView: ImageView = view.findViewById(R.id.alphabetImage)
         val textView: TextView = view.findViewById(R.id.alphabetText)
+        val imagetext: TextView = view.findViewById(R.id.imageAlphabetText)
     }
 }
 
