@@ -1,24 +1,22 @@
 package com.example.kyrapp.utils.validator
 
-import android.content.Context
-import com.example.kyrapp.ui.MainActivity
+import android.widget.EditText
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.vicmikhailau.maskededittext.MaskedEditText
 
 object AuthValidator {
-
     fun validateEmail(
         etEmail: TextInputEditText,
         inputEmail: TextInputLayout
     ): Boolean {
         return when {
-            etEmail.text.toString().trim().isEmpty() -> {
+            trimAny(etEmail).isEmpty() -> {
                 inputEmail.error = "Обязательное поле"
                 false
             }
 
-            !isEmailValid(etEmail.text.toString().trim()) -> {
+            !isEmailValid(trimAny(etEmail)) -> {
                 inputEmail.error = "Заполните корректно"
                 false
             }
@@ -30,14 +28,14 @@ object AuthValidator {
         }
     }
 
-    fun validateNumber(etNumber: MaskedEditText, etNumberL: TextInputLayout): Boolean{
+    fun validateNumber(etNumber: MaskedEditText, etNumberL: TextInputLayout): Boolean {
         return when {
-            etNumber.text.toString().trim().isEmpty() -> {
+            trimAny(etNumber).isEmpty() -> {
                 etNumberL.error = "Обязательное поле"
                 false
             }
 
-            etNumber.text.toString().trim().length != 17 -> {
+            trimAny(etNumber).length != 17 -> {
                 etNumberL.error = "Заполните корректно"
                 false
             }
@@ -53,40 +51,37 @@ object AuthValidator {
         etPassword: TextInputEditText,
         etPasswordL: TextInputLayout
     ): Boolean {
-        val oneLowerCase = Regex("[a-z]+")
-        val oneUpperCase = Regex("[A-Z]+")
-        val oneNumeric = Regex("\\d") // matches any digit
+        val password = trimAny(etPassword)
 
         return when {
-            etPassword.text.toString().trim().isEmpty() -> {
+            password.isEmpty() -> {
                 etPasswordL.error = "Обязательное поле"
                 false
             }
 
-            etPassword.text.toString().trim().length < 8 || etPassword.text.toString()
-                .trim().length > 12 -> {
+            password.length !in 8..12 -> {
                 etPasswordL.error = "Пароль должен состоять из 8-12 символов"
                 false
             }
 
-            !oneNumeric.containsMatchIn(etPassword.text.toString().trim()) -> {
+            !password.containsDigit() -> {
                 etPasswordL.error = "Должна быть минимум 1 цифра"
                 false
             }
 
-            !oneLowerCase.containsMatchIn(etPassword.text.toString().trim()) -> {
+            !password.containsLowerCase() -> {
                 etPasswordL.error = "Должна быть минимум 1 маленькая буква"
                 false
             }
 
-            !oneUpperCase.containsMatchIn(etPassword.text.toString().trim()) -> {
+            !password.containsUpperCase() -> {
                 etPasswordL.error = "Должна быть минимум 1 большая буква"
                 false
             }
 
             else -> {
                 etPasswordL.error = null
-                true
+                return true
             }
         }
     }
@@ -96,21 +91,22 @@ object AuthValidator {
         etPasswordL: TextInputLayout,
         etPasswordConfirm: TextInputEditText
     ): Boolean {
-
-        return when {
-            etPassword.text.toString().trim() != etPasswordConfirm.text.toString().trim() -> {
-                etPasswordL.error = "Пароли не совпадают"
-                false
-            }
-
-            else -> {
-                etPasswordL.error = null
-                true
-            }
+        val password = trimAny(etPassword)
+        val passwordConfirm = trimAny(etPasswordConfirm)
+        if (password != passwordConfirm) {
+            etPasswordL.error = "Пароли не совпадают"
+            return false
         }
+
+        etPasswordL.error = null
+        return true
     }
 
-    private fun isEmailValid(email: String): Boolean {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
+    fun isEmailValid(email: String): Boolean =
+        android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
 }
+
+private fun String.containsDigit(): Boolean = any { it.isDigit() }
+private fun String.containsLowerCase(): Boolean = any { it.isLowerCase() }
+private fun String.containsUpperCase(): Boolean = any { it.isUpperCase() }
+private fun trimAny(et: EditText): String = et.text.toString().trim()

@@ -2,6 +2,8 @@ package com.example.kyrapp.adapters
 
 import android.content.Context
 import android.media.MediaPlayer
+import android.speech.tts.TextToSpeech
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +12,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.kyrapp.R
 
+
 class SwipeKolodaAdapter(private val context: Context, private val items: List<Triple<Int, String, String>>) : BaseAdapter() {
     lateinit var mediaPlayer: MediaPlayer
+
+
     override fun getCount(): Int {
         return items.size
     }
@@ -53,6 +58,14 @@ class SwipeKolodaAdapter(private val context: Context, private val items: List<T
         viewHolder.textView.text = text
         viewHolder.imagetext.text = imageText
 
+        // play audio of the letter
+        viewHolder.imageView.setOnClickListener {
+            mediaPlayer = MediaPlayer.create(context, R.raw.a)
+            mediaPlayer.start()
+        }
+        if (::mediaPlayer.isInitialized) {
+            mediaPlayer.release()
+        }
         return view
     }
 
@@ -61,5 +74,6 @@ class SwipeKolodaAdapter(private val context: Context, private val items: List<T
         val textView: TextView = view.findViewById(R.id.alphabetText)
         val imagetext: TextView = view.findViewById(R.id.imageAlphabetText)
     }
+
 }
 

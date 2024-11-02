@@ -12,6 +12,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.example.kyrapp.R
 import com.example.kyrapp.databinding.FragmentLoginBinding
+import com.example.kyrapp.utils.validator.AuthValidator
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.Firebase
@@ -56,11 +57,11 @@ class LoginFragment : Fragment() {
         binding.btnNext.setOnClickListener {
             var email = binding.etEmail.text.toString().trim()
             var pass = binding.etPass.text.toString().trim()
-//            if (isEmailValid(email)){
-//                Toast.makeText(requireContext(), "Email is valid", Toast.LENGTH_SHORT).show()
-//            } else{
-//                Toast.makeText(requireContext(), "Email is invalid", Toast.LENGTH_SHORT).show()
-//            }
+            if (AuthValidator.isEmailValid(email)){
+                Toast.makeText(requireContext(), "Email is valid", Toast.LENGTH_SHORT).show()
+            } else{
+                Toast.makeText(requireContext(), "Email is invalid", Toast.LENGTH_SHORT).show()
+            }
             //signIn(email, pass)
             findNavController().navigate(R.id.action_loginFragment_to_mainScreenActivity)
         }
@@ -98,5 +99,4 @@ class LoginFragment : Fragment() {
         }
 
     }
-
 }
