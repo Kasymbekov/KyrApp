@@ -46,12 +46,6 @@ class AlphabetFragment : Fragment() {
         }
         images.recycle() // Освобождаем массив изображений
 
-        // Настраиваем адаптер
-        val items = listOf(
-            Pair(R.drawable.alma, "А"),
-            Pair(R.drawable.balyk, "Б"),
-            Pair(R.drawable.vaza, "В")
-        )
         val adapter = SwipeKolodaAdapter(requireContext(), items)
         binding.koloda.adapter = adapter
     }
