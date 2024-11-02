@@ -12,8 +12,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.kyrapp.R
 
-class SwipeKolodaAdapter(private val context: Context, private val items: List<Pair<Int, String>>) : BaseAdapter() {
-    private lateinit var mediaPlayer: MediaPlayer
+
+class SwipeKolodaAdapter(private val context: Context, private val items: List<Triple<Int, String, String>>) : BaseAdapter() {
+    lateinit var mediaPlayer: MediaPlayer
+
+
     override fun getCount(): Int {
         return items.size
     }
@@ -39,10 +42,21 @@ class SwipeKolodaAdapter(private val context: Context, private val items: List<P
             viewHolder = view.tag as ViewHolder
         }
 
-        val (imageResId, text) = items[position]
+        val (imageResId, text, imageText) = items[position]
+
+        // play audio of the letter
+        viewHolder.imageView.setOnClickListener {
+            mediaPlayer = MediaPlayer.create(context, R.raw.a)
+            mediaPlayer.start()
+        }
+        if (::mediaPlayer.isInitialized) {
+            mediaPlayer.release()
+        }
+
 
         viewHolder.imageView.setImageResource(imageResId)
         viewHolder.textView.text = text
+        viewHolder.imagetext.text = imageText
 
         // play audio of the letter
         viewHolder.imageView.setOnClickListener {
@@ -58,6 +72,7 @@ class SwipeKolodaAdapter(private val context: Context, private val items: List<P
     private class ViewHolder(view: View) {
         val imageView: ImageView = view.findViewById(R.id.alphabetImage)
         val textView: TextView = view.findViewById(R.id.alphabetText)
+        val imagetext: TextView = view.findViewById(R.id.imageAlphabetText)
     }
 
 }

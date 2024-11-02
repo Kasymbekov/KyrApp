@@ -15,6 +15,7 @@ import com.example.kyrapp.model.Item
 class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
     private var items: List<Item> = listOf()
+    //у
 
     fun setItems(items: List<Item>) {
         this.items = items

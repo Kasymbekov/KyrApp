@@ -30,6 +30,23 @@ class AlphabetFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        val kolodaView = view.findViewById<Koloda>(R.id.koloda)
+
+        // Загружаем строки и изображения из ресурсов
+        val letters = resources.getStringArray(R.array.letters)
+        val images = resources.obtainTypedArray(R.array.images)
+        val imageText = resources.getStringArray(R.array.imageText)
+
+        // Создаем список Triple для изображений, букв и дополнительных текстов
+        val items = mutableListOf<Triple<Int, String, String>>()
+        for (i in letters.indices) {
+            val imageRes = images.getResourceId(i, -1)
+            items.add(Triple(imageRes, letters[i], imageText[i]))
+        }
+        images.recycle() // Освобождаем массив изображений
+
+        // Настраиваем адаптер
         val items = listOf(
             Pair(R.drawable.alma, "А"),
             Pair(R.drawable.balyk, "Б"),
