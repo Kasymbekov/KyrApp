@@ -4,9 +4,9 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "letters_table")
 data class Letter(
-    @PrimaryKey val id: Int,
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Int = 0,
     @ColumnInfo(name = "letter") val letter: String,
     @ColumnInfo(name = "word") val word: String,
     @ColumnInfo(name = "path") val path: String

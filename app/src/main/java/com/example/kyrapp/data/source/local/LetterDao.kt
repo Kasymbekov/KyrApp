@@ -7,11 +7,13 @@ import androidx.room.Query
 
 @Dao
 interface LetterDao {
-    @Query("SELECT * FROM letter")
-    fun getAll(): List<Letter>
+    @Query("SELECT * FROM letters_table")
+    suspend fun getAll(): List<Letter>
 
-    @Query("SELECT * FROM letter WHERE id IN (:letterIds)")
+    @Query("SELECT * FROM letters_table WHERE id IN (:letterIds)")
     fun loadAllByIds(letterIds: IntArray): List<Letter>
+    @Insert
+    fun insert(letter: Letter)
 
     @Insert
     fun insertAll(vararg letters: Letter)
