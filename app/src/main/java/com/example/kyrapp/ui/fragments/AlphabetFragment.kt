@@ -48,7 +48,7 @@ class AlphabetFragment : Fragment() {
 
         val adapter = SwipeKolodaAdapter(requireContext(), items)
         binding.koloda.adapter = adapter
-    }
+    } //азаз
 
 
 }
