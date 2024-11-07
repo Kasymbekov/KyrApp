@@ -7,4 +7,13 @@
     <color name="green">#15802D</color>
     <color name="main_bg">#FFE8C5</color>
     <color name="text_color_dark">#333333</color>
+
+    <color name="checkedItem">#007AFF</color> <!-- Синий цвет -->
+    <color name="uncheckedItem">#808080</color> <!-- Серый цвет -->
+    <color name="bottomNavBG">#FFFFFF</color>
+
+
+
+
+
 </resources>

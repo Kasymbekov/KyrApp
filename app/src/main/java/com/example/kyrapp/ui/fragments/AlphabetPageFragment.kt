@@ -1,6 +1,5 @@
 package com.example.kyrapp.ui.fragments
 
-import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +10,7 @@ import com.example.kyrapp.adapters.SwipeKolodaAdapter
 import com.example.kyrapp.databinding.FragmentAlphabetBinding
 import com.yalantis.library.Koloda
 
-class AlphabetFragment : Fragment() {
+class AlphabetPageFragment : Fragment() {
     private lateinit var binding: FragmentAlphabetBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +46,10 @@ class AlphabetFragment : Fragment() {
         images.recycle() // Освобождаем массив изображений
 
         val adapter = SwipeKolodaAdapter(requireContext(), items)
+
         binding.koloda.adapter = adapter
+
+
     } //азаз
 
 

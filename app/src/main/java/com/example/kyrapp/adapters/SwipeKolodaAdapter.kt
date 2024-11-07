@@ -12,21 +12,21 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.kyrapp.R
 
-
 class SwipeKolodaAdapter(private val context: Context, private val items: List<Triple<Int, String, String>>) : BaseAdapter() {
     lateinit var mediaPlayer: MediaPlayer
 
-
+    // Возвращаем произвольное большое значение, чтобы создать ощущение бесконечной прокрутки
     override fun getCount(): Int {
-        return items.size
+        return Integer.MAX_VALUE
     }
 
     override fun getItem(position: Int): Any {
-        return items[position]
+        // Используем модуль для перезапуска индекса
+        return items[position % items.size]
     }
 
     override fun getItemId(position: Int): Long {
-        return position.toLong()
+        return (position % items.size).toLong()
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -42,30 +42,23 @@ class SwipeKolodaAdapter(private val context: Context, private val items: List<T
             viewHolder = view.tag as ViewHolder
         }
 
-        val (imageResId, text, imageText) = items[position]
+        // Используем модуль для бесконечной прокрутки
+        val actualPosition = position % items.size
+        val (imageResId, text, imageText) = items[actualPosition]
 
-        // play audio of the letter
-        viewHolder.imageView.setOnClickListener {
-            mediaPlayer = MediaPlayer.create(context, R.raw.a)
-            mediaPlayer.start()
-        }
-        if (::mediaPlayer.isInitialized) {
-            mediaPlayer.release()
-        }
-
-
+        // Инициализация MediaPlayer и воспроизведение звука
         viewHolder.imageView.setImageResource(imageResId)
         viewHolder.textView.text = text
         viewHolder.imagetext.text = imageText
 
-        // play audio of the letter
         viewHolder.imageView.setOnClickListener {
+            if (::mediaPlayer.isInitialized) {
+                mediaPlayer.release()
+            }
             mediaPlayer = MediaPlayer.create(context, R.raw.a)
             mediaPlayer.start()
         }
-        if (::mediaPlayer.isInitialized) {
-            mediaPlayer.release()
-        }
+
         return view
     }
 
@@ -74,6 +67,6 @@ class SwipeKolodaAdapter(private val context: Context, private val items: List<T
         val textView: TextView = view.findViewById(R.id.alphabetText)
         val imagetext: TextView = view.findViewById(R.id.imageAlphabetText)
     }
-
 }
+
 

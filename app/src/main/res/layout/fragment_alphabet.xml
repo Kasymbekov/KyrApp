@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.AlphabetFragment"
-    android:background="@color/bg_yellow_color">
+    tools:context=".ui.fragments.AlphabetPageFragment"
+    android:background="#D2F2FF">
 
     <com.yalantis.library.Koloda
         android:id="@+id/koloda"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:koloda_card_layout="@layout/item_koloda"/>
+        app:koloda_card_layout="@layout/item_koloda"
+        android:elevation="8dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
