@@ -20,7 +20,7 @@ class AlphabetPageFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAlphabetBinding.inflate(layoutInflater)
         val view = binding.root
         return view
@@ -29,8 +29,6 @@ class AlphabetPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        val kolodaView = view.findViewById<Koloda>(R.id.koloda)
 
         // Загружаем строки и изображения из ресурсов
         val letters = resources.getStringArray(R.array.letters)
