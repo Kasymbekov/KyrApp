@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Главная"
+    <item android:title="@string/homePageTitle"
         android:icon="@drawable/homepage"
         android:id="@+id/mainFragment"/>
-    <item android:title="Уроки"
+    <!--<item android:title="Уроки"
         android:icon="@drawable/lessonspage"
-        android:id="@+id/lessonsFragment"/>
-    <item android:title="Алфавит"
+        android:id="@+id/lessonsFragment"/>-->
+    <item android:title="@string/alphabetPageTitle"
         android:icon="@drawable/abc"
         android:id="@+id/alphabetFragment"/>
+    <item android:title="@string/dictionaryPageTitle"
+        android:icon="@drawable/dictionary_icon"
+        android:id="@+id/dictionaryFragment"/>
+    <item android:title="@string/profilePageTitle"
+        android:icon="@drawable/profile_icon"
+        android:id="@+id/profileFragment"/>
+
 
 </menu>

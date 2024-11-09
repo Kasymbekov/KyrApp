@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.kyrapp.databinding.FragmentMainBinding
 
-class MainFragment : Fragment() {
+class MainPageFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentMainBinding.inflate(inflater, container, false)

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- colors to bottom nav -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/checkedItem" android:state_checked="true" /> <!-- Цвет для выбранного элемента -->
+    <item android:color="@color/uncheckedItem" android:state_checked="false" /> <!-- Цвет для невыбранных элементов -->
+</selector>

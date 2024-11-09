@@ -22,10 +22,13 @@
         android:id="@+id/bottomMenu"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:backgroundTint="@color/bottomNavBG"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_menu" />
+        app:itemTextColor="@color/botttom_nav_menu_color"
+        app:itemIconTint="@color/botttom_nav_menu_color"
+        app:menu="@menu/bottom_menu"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

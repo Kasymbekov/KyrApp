@@ -4,8 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_yellow_color"
-    android:backgroundTint="@color/bg_yellow_color"
-    tools:context=".ui.fragments.MainFragment">
+    android:backgroundTint="@color/white"
+    tools:context=".ui.fragments.MainPageFragment">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/homePageTitle"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView2"

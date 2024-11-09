@@ -36,12 +36,12 @@
         tools:layout="@layout/activity_main_screen" />
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.kyrapp.ui.fragments.MainFragment"
+        android:name="com.example.kyrapp.ui.fragments.MainPageFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
     <fragment
         android:id="@+id/alphabetFragment"
-        android:name="com.example.kyrapp.ui.fragments.AlphabetFragment"
+        android:name="com.example.kyrapp.ui.fragments.AlphabetPageFragment"
         android:label="fragment_alphabet"
         tools:layout="@layout/fragment_alphabet" />
     <fragment
@@ -49,9 +49,20 @@
         android:name="com.example.kyrapp.ui.fragments.LessonsFragment"
         android:label="fragment_lessons"
         tools:layout="@layout/fragment_lessons" />
+
     <fragment
         android:id="@+id/resetPassFragment"
         android:name="com.example.kyrapp.ui.auth.ResetPassFragment"
         android:label="fragment_reset_pass"
         tools:layout="@layout/fragment_reset_pass" />
+    <fragment
+        android:id="@+id/dictionaryFragment"
+        android:name="com.example.kyrapp.ui.fragments.DictionaryPageFragment"
+        android:label="fragment_dictionary_page"
+        tools:layout="@layout/fragment_dictionary_page" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.kyrapp.ui.fragments.ProfilePageFragment"
+        android:label="fragment_profile_page"
+        tools:layout="@layout/fragment_profile_page" />
 </navigation>
