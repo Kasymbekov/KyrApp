@@ -36,12 +36,12 @@
         tools:layout="@layout/activity_main_screen" />
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.kyrapp.ui.fragments.MainPageFragment"
+        android:name="com.example.kyrapp.ui.fragments.main.MainPageFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
     <fragment
         android:id="@+id/alphabetFragment"
-        android:name="com.example.kyrapp.ui.fragments.AlphabetPageFragment"
+        android:name="com.example.kyrapp.ui.fragments.alphabet.AlphabetPageFragment"
         android:label="fragment_alphabet"
         tools:layout="@layout/fragment_alphabet" />
     <fragment
@@ -57,12 +57,12 @@
         tools:layout="@layout/fragment_reset_pass" />
     <fragment
         android:id="@+id/dictionaryFragment"
-        android:name="com.example.kyrapp.ui.fragments.DictionaryPageFragment"
+        android:name="com.example.kyrapp.ui.fragments.dictionary.DictionaryPageFragment"
         android:label="fragment_dictionary_page"
         tools:layout="@layout/fragment_dictionary_page" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.kyrapp.ui.fragments.ProfilePageFragment"
+        android:name="com.example.kyrapp.ui.fragments.profile.ProfilePageFragment"
         android:label="fragment_profile_page"
         tools:layout="@layout/fragment_profile_page" />
 </navigation>

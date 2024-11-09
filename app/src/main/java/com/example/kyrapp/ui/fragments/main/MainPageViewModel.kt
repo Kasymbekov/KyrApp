@@ -1,11 +1,11 @@
-package com.example.kyrapp.viewModel
+package com.example.kyrapp.ui.fragments.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.kyrapp.model.Item
+import com.example.kyrapp.data.model.Item
 
-class ItemViewModel : ViewModel() {
+class MainPageViewModel: ViewModel() {
     private val _items = MutableLiveData<List<Item>>()
     val items: LiveData<List<Item>> get() = _items
 
@@ -22,4 +22,6 @@ class ItemViewModel : ViewModel() {
         )
         _items.value = itemList
     }
+
+
 }

@@ -39,14 +39,14 @@ class MainScreenActivity : AppCompatActivity() {
 
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT // force portrait mode
 
-        val db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "db")
-            .allowMainThreadQueries().fallbackToDestructiveMigration().build()
-        GlobalScope.launch {
-
-            //db.letterDao().insert(Letter( 1, "a", "арык", "C://Program files"))
-            val users: List<Letter> = db.letterDao().getAll()
-            Log.e("nurs", "${users.size}")
-
-        }
+//        val db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "db")
+//            .allowMainThreadQueries().fallbackToDestructiveMigration().build()
+//        GlobalScope.launch {
+//
+//            //db.letterDao().insert(Letter( 1, "А", "Алма", 2131230841))
+//            val users: List<Letter> = db.letterDao().getAll()
+//            Log.e("nurs", "${users.size}")
+//
+//        }
     }
 }

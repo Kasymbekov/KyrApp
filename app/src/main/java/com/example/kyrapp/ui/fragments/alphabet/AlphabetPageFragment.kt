@@ -1,17 +1,17 @@
-package com.example.kyrapp.ui.fragments
+package com.example.kyrapp.ui.fragments.alphabet
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.kyrapp.R
+import androidx.lifecycle.ViewModelProvider
 import com.example.kyrapp.adapters.SwipeKolodaAdapter
 import com.example.kyrapp.databinding.FragmentAlphabetBinding
-import com.yalantis.library.Koloda
 
 class AlphabetPageFragment : Fragment() {
     private lateinit var binding: FragmentAlphabetBinding
+    private lateinit var itemViewModel: AlphabetPageViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,26 +29,11 @@ class AlphabetPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        // Загружаем строки и изображения из ресурсов
-        val letters = resources.getStringArray(R.array.letters)
-        val images = resources.obtainTypedArray(R.array.images)
-        val imageText = resources.getStringArray(R.array.imageText)
-
-        // Создаем список Triple для изображений, букв и дополнительных текстов
         val items = mutableListOf<Triple<Int, String, String>>()
-        for (i in letters.indices) {
-            val imageRes = images.getResourceId(i, -1)
-            items.add(Triple(imageRes, letters[i], imageText[i]))
+        itemViewModel = ViewModelProvider(this)[AlphabetPageViewModel::class.java]
+        itemViewModel.letters.observe(viewLifecycleOwner) { letters ->
+            items.addAll(letters.map { Triple(it.drawableId, it.letter, it.word) })
+            binding.koloda.adapter = SwipeKolodaAdapter(requireContext(), items)
         }
-        images.recycle() // Освобождаем массив изображений
-
-        val adapter = SwipeKolodaAdapter(requireContext(), items)
-
-        binding.koloda.adapter = adapter
-
-
-    } //азаз
-
-
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.kyrapp.model
+package com.example.kyrapp.data.model
 
 data class Item(
     val lessonNum: String,

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg_yellow_color"
     android:backgroundTint="@color/white"
-    tools:context=".ui.fragments.MainPageFragment">
+    tools:context=".ui.fragments.main.MainPageFragment">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

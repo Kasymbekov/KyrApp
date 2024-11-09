@@ -1,25 +1,18 @@
 package com.example.kyrapp.adapters
 
-import android.provider.Settings.Global
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kyrapp.MainScreenActivity
 import com.example.kyrapp.R
-import com.example.kyrapp.model.Item
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.example.kyrapp.data.model.Item
 
 class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
     private var items: List<Item> = listOf()
-    //у
 
     fun setItems(items: List<Item>) {
         this.items = items
