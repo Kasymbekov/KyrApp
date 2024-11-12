@@ -43,7 +43,7 @@ class MainPageFragment : Fragment() {
         // just to adding items into the db
         val db = AppDatabase.getDatabase(requireContext())
         GlobalScope.launch {
-            //db.letterDao().insert(Letter( 3, "Б", "Боб", 2131230841))
+//            db.letterDao().insert(Letter( letter = "А", word = "Алма", drawableId = 2131230841))
         }
 
     }
